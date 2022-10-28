@@ -34,6 +34,10 @@ pipeline{
                     sh "docker push thangsu/thangapp:${DOCKER_TAG}"
             }
         }
+        stage("ansible deploy"){
+            steps{
+                ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, extras: 'DOCKER_TAG="${DOCKER_TAG}"', installation: 'ansible', inventory: 'hosts', playbook: 'deploy-docker.yaml'
+        }
     }
     
 }
