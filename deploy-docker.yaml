@@ -20,7 +20,7 @@
       name: docker-py
       state: present
   - name: start the container
-    community.docker.docker_container:
+    docker_container:
       name: thangapp
       image: "thangsu/thangapp:${{DOCKER_TAG}}"
       state: started
