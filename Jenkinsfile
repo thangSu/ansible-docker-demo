@@ -21,7 +21,7 @@ pipeline{
         stage("docker build"){
             steps{
                 dir('helloworld'){
-                    sh 'docker build -t thangsu/thangapp:${DOCKER_TAG}'
+                    sh 'docker build . -t thangsu/thangapp:${DOCKER_TAG}'
                 } 
             }
         }
