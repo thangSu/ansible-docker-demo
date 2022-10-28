@@ -6,6 +6,14 @@
     yum:
       name: python-pip
       state: present
+  - name: install docker
+    yum:
+      name: docker
+      state: present
+  - name: start docker 
+    ansible.builtin.service:
+      name: docker
+      state: started
   - name: install docker-py python module
     pip:
       name: docker-py
