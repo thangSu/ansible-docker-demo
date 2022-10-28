@@ -37,6 +37,7 @@ pipeline{
         stage("ansible deploy"){
             steps{
                 ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, extras: '-e DOCKER_TAG=${DOCKER_TAG}', installation: 'ansible', inventory: 'hosts', playbook: 'deploy-docker.yaml'
+            }
         }
     }
     
