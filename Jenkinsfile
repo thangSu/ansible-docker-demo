@@ -25,6 +25,15 @@ pipeline{
                 } 
             }
         }
+        stage("docker push"){
+            steps{
+                    withCredentials([string(credentialsId: 'docker-pass', variable: 'docker_password')]) {
+                         sh "docker login -u thangsu -p ${docker_password}"
+                    }   
+                   
+                    sh "docker push thangsu/thangapp:${DOCKER_TAG}"
+            }
+        }
     }
     
 }
